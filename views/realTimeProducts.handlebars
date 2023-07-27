@@ -1,0 +1,66 @@
+{{!--Para agregar/eliminar productos por websocket --}}
+<div class="uk-margin-top">
+  
+  <form class="uk-form-stacked">
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Nombre</label>
+        <div class="uk-form-controls">
+            <input id="nombre" class="uk-input" type="text" name="title" required>
+        </div>
+      </div>
+      
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Descripción</label>
+        <div class="uk-form-controls">
+            <input id="description" class="uk-input" type="text" name="description" required>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Precio</label>
+        <div class="uk-form-controls">
+            <input id="price" class="uk-input" type="number" name="price" required>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Stock</label>
+        <div class="uk-form-controls">
+            <input id="stock" class="uk-input" type="number" name="stock" required>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Keywords</label>
+        <div class="uk-form-controls">
+            <input id="keywords" class="uk-input" type="text" name="keywords" placeholder="Separadoas por coma" required>
+        </div>
+      </div>
+
+      <button class="uk-button uk-button-secondary uk-button-small uk-margin-top" id="AgregarProducto">Agregar</button>
+  </form>
+  
+</div>
+
+<hr>
+
+<div id="products" class="uk-child-width-1-4@m" uk-grid>
+  {{!--Para cada item de la lista de productos --}}
+  {{#each productos}}  
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+          <img alt="foto producto" />
+        </div>
+        <div class="uk-card-body">
+          <h3 class="uk-card-title">{{ this.title }}</h3>
+          <h5>USD ${{this.price}}</h5>
+            <span class="uk-badge">{{this.keywords}}</span>
+            <p>{{this.description}}</p>
+          <button class="uk-button uk-button-secondary uk-button-small">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  {{/each}}   
+  {{!-- hasta aqui la repeticion--}}
+</div>
