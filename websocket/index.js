@@ -8,23 +8,18 @@ function socketManager(socket) {
     console.log("user disconnected");
   });
 
-  socket.on("addToProducts", async ({ product }) => {
-    console.log(product);
+  socket.on("addToProducts", async (product) => {
     await productManager.create(product);
     const products = await productManager.getAll();
 
     socket.emit("viewProducts", products);
   });
 
-  socket.on("viewProducts", async (products) => {
-    document.getElementById("products").innerHTML = products;
-  });
-
   socket.on("deleteFromProducts", async (productId) => {
-    await cartManager.addProduct(userId, productId);
-    const products = await cartManager.getProductsByUserId(userId);
+    await productManager.delete(productId);
+    const products = await productManager.getAll();
 
-    socket.emit("productsInCart", products);
+    socket.emit("viewProducts", products);
   });
 }
 

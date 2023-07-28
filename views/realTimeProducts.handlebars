@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <button class="uk-button uk-button-secondary uk-button-small uk-margin-top" id="AgregarProducto">Agregar</button>
+      <button type="button" class="uk-button uk-button-secondary uk-button-small uk-margin-top" id="AgregarProducto">Agregar</button>
   </form>
   
 </div>
@@ -49,6 +49,7 @@
   {{#each productos}}  
     <div>
       <div class="uk-card uk-card-default">
+         <span id={{this.id}} class="delete">x</span>
         <div class="uk-card-media-top">
           <img alt="foto producto" />
         </div>
