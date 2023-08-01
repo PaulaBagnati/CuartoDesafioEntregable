@@ -14,20 +14,6 @@
     ]
   },
   {
-    "id": 2,
-    "title": "POLERA INDI",
-    "description": "Polera de mangas largas confeccionada en morley soft. Un ítem ideal para el otoño que puede usarse como primera piel por su excelente calce. Contiene 5% de elastano en su composición, por lo cual se adhiere a la figura. La encontrás en color lima, marfil o verde militar.",
-    "price": 13.799,
-    "stock": 10,
-    "keywords": [
-      "Manga Larga",
-      "Polera",
-      "Elastano",
-      "Mujer",
-      "Morley"
-    ]
-  },
-  {
     "id": 3,
     "title": "REMERA SAUCE",
     "description": "Remera manga larga con ruedo rústico y detalle de costuras en frente. La encontrás en tonos lima o negro. ",
@@ -137,6 +123,17 @@
       "Poliéster",
       "Mujer",
       "Remera"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Remera Paula",
+    "description": "Paulita",
+    "price": "25",
+    "stock": "20",
+    "keywords": [
+      "escore en v",
+      " remera manga larga"
     ]
   }
 ]
