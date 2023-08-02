@@ -127,13 +127,12 @@
   },
   {
     "id": 11,
-    "title": "Remera Paula",
-    "description": "Paulita",
-    "price": "25",
-    "stock": "20",
+    "title": "Remera varón",
+    "description": "Remera varón",
+    "price": "10.50",
+    "stock": "10",
     "keywords": [
-      "escore en v",
-      " remera manga larga"
+      "escote en v"
     ]
   }
 ]

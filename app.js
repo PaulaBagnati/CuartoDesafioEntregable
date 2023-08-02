@@ -23,6 +23,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/static", express.static(path.join(__dirname, "public")));
 
+// middlware del socket
+app.use((req, res, next) => {
+  req.io = io;
+
+  next();
+});
+
 //rutas
 app.use("/", Routes.home); // rutas de vistas
 app.use("/api", Routes.api);

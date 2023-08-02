@@ -8,19 +8,19 @@ function socketManager(socket) {
     console.log("user disconnected");
   });
 
-  socket.on("addToProducts", async (product) => {
-    await productManager.create(product);
-    const products = await productManager.getAll();
+  // socket.on("addToProducts", async (product) => {
+  //   await productManager.create(product);
+  //   const products = await productManager.getAll();
 
-    socket.emit("viewProducts", products);
-  });
+  //   socket.emit("viewProducts", products);
+  // });
 
-  socket.on("deleteFromProducts", async (productId) => {
-    await productManager.delete(productId);
-    const products = await productManager.getAll();
+  // socket.on("deleteFromProducts", async (productId) => {
+  //   await productManager.delete(productId);
+  //   const products = await productManager.getAll();
 
-    socket.emit("viewProducts", products);
-  });
+  //   socket.emit("viewProducts", products);
+  // });
 }
 
 module.exports = socketManager;

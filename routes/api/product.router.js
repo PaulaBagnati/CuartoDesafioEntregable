@@ -46,11 +46,28 @@ router.get("/", async (req, res) => {
 
 // /api/productos/
 router.post("/", async (req, res) => {
-  const { body } = req;
+  const body = req.query;
 
-  const product = await productManager.create(body);
+  const products = await productManager.getAll();
 
-  res.status(201).send(product);
+  const newId = products[products.length - 1]?.id + 1 || 0;
+
+  if (
+    !body.title ||
+    !body.description ||
+    !body.price ||
+    !body.stock ||
+    !body.keywords
+  ) {
+    res.status(400).send("Todos los campos son obligatorios");
+  } else if (products.find((prod) => prod.title == body.title)) {
+    res.status(400).send("Este producto ya se encuentra en el archivo");
+  } else {
+    req.io.emit("addProduct", body, (id = newId));
+    //await productManager.addProduct(body, id = newId + 1)
+    const product = await productManager.create(body);
+    res.status(201).send(`El Producto ${product.title} fue creado con éxito`);
+  }
 });
 
 // /api/productos/:id
@@ -76,16 +93,20 @@ router.put("/:id", async (req, res) => {
 
 // /api/productos/:id
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+  const id = req.query.id;
+
+  req.io.emit("deleteProduct", id);
 
   if (!(await productManager.getById(id))) {
-    res.sendStatus(404);
+    res
+      .status(404)
+      .send(`El producto con id: ${id} no se encuentra en el archivo.`);
     return;
   }
 
   await productManager.delete(id);
 
-  res.sendStatus(200);
+  res.status(200).send(`El producto con id: ${id} ha sido eliminado.`);
 });
 
 module.exports = router;
